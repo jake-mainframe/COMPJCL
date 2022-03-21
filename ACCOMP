@@ -1,0 +1,25 @@
+//ACOMPC  JOB (JOBNAME),'XSS',CLASS=A,NOTIFY=&SYSUID
+//PROC JCLLIB ORDER=(CBC.SCCNPRC)
+//*-------------------------------------------------------------------
+//* Compile and bind step
+//*-------------------------------------------------------------------
+//COMP     EXEC EDCCB,
+//         OUTFILE='JAKE.TSOTEST.APFLIB(FGETSCPY),DISP=SHR',
+//         CPARM='ASM'
+//STEPLIB  DD DSN=CBC.SCCNCMP,DISP=SHR
+//         DD DSN=CEE.SCEERUN,DISP=SHR
+//         DD DSN=CEE.SCEERUN2,DISP=SHR
+//COMPILE.SYSIN DD DSN=JAKE.SOURCE.C(FGETSCPY),DISP=SHR
+//BIND.SYSIN   DD *
+  SETCODE AC(1)
+  NAME FGETSCPU(R)
+/*
+//*-------------------------------------------------------------------
+//* Run step
+//*-------------------------------------------------------------------
+//GO       EXEC PGM=FGETSCPY
+//STEPLIB  DD DSN=JAKE.TSOTEST.APFLIB,DISP=SHR
+//SYSIN    DD *
+TEST
+//*
+//SYSOUT   DD SYSOUT=*
